@@ -1,4 +1,5 @@
 ﻿using System;
+using System.ComponentModel.DataAnnotations;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata;
 
@@ -463,6 +464,8 @@ namespace FAMS.Models
                     .HasMaxLength(100)
                     .HasColumnName("email");
 
+                entity.Property(e => e.Password).IsRequired().HasMaxLength(100);
+
                 entity.Property(e => e.Gender)
                     .HasMaxLength(30)
                     .HasColumnName("gender");
@@ -489,6 +492,16 @@ namespace FAMS.Models
                     .WithMany(p => p.Users)
                     .HasForeignKey(d => d.Roleid)
                     .HasConstraintName("users_roleid_fkey");
+
+                entity.HasData(
+                    new User
+                    {
+                        Id = Guid.Parse("00000000-0000-0000-0000-000000012345"),
+                        Email = "FAMs@gmail.com",
+                        Password = "fams123",
+                        Name = "Admin"
+                    }
+                );
             });
 
             OnModelCreatingPartial(modelBuilder);
