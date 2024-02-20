@@ -499,7 +499,8 @@ namespace FAMS.Models
                         Id = Guid.Parse("00000000-0000-0000-0000-000000012345"),
                         Email = "FAMs@gmail.com",
                         Password = "fams123",
-                        Name = "Admin"
+                        Name = "Admin",
+                        Status = "Active"
                     }
                 );
             });

@@ -1,5 +1,7 @@
 var builder = WebApplication.CreateBuilder(args);
-
+//Add bearer
+builder.Services.AddAuthorization();
+builder.Services.AddAuthentication("Bearer").AddJwtBearer();
 // Add services to the container.
 
 builder.Services.AddControllers();
