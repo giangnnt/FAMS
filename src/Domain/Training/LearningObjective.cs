@@ -13,6 +13,7 @@ namespace net03_group02.src.Domain.Training
         public string Name { get; set; } = null!;
         public string? Type { get; set; }
         public string? Description { get; set; }
+        public Guid TrainingContentId { get; set; }
 
         public List<Syllabus.Syllabus> Syllabuses { get; set; } = new();
         public TrainingContent TrainingContent { get; set; } = null!;

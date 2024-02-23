@@ -7,7 +7,7 @@ namespace net03_group02.src.Domain.Training
 {
     public class TrainingProgramSyllabus
     {
-        public Guid TopicCode { get; set; }
+        public Guid SyllabusId { get; set; }
         public Guid TrainingProgramCode { get; set; }
         public string? Sequence { get; set; }
 
