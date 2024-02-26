@@ -26,7 +26,8 @@ namespace net03_group02.src.Application.Core.Jwt
 
         public string GenerateToken(Guid userId, Guid sessionId, int roleId, UserStatusEnum status, int exp)
         {
-            var key = Encoding.ASCII.GetBytes(Environment.)
+            var key = Encoding.ASCII.GetBytes(Environment.GetEnvironmentVariable("SecretKey") ?? "TtgphUjM(.[2m.Z,lD&,5!el};}CNoY0");
+            throw new NotImplementedException();
         }
 
         public Payload? ValidateToken(string token)
