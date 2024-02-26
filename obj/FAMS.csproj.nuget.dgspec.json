@@ -1,23 +1,23 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\CAPYPSO\\Documents\\WORKSPACE\\DEV\\net03_group02\\FAMS.csproj": {}
+    "C:\\Users\\TuanLoc\\Documents\\OJT_FA_NET_03\\net03_group02\\FAMS.csproj": {}
   },
   "projects": {
-    "C:\\Users\\CAPYPSO\\Documents\\WORKSPACE\\DEV\\net03_group02\\FAMS.csproj": {
+    "C:\\Users\\TuanLoc\\Documents\\OJT_FA_NET_03\\net03_group02\\FAMS.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\CAPYPSO\\Documents\\WORKSPACE\\DEV\\net03_group02\\FAMS.csproj",
+        "projectUniqueName": "C:\\Users\\TuanLoc\\Documents\\OJT_FA_NET_03\\net03_group02\\FAMS.csproj",
         "projectName": "FAMS",
-        "projectPath": "C:\\Users\\CAPYPSO\\Documents\\WORKSPACE\\DEV\\net03_group02\\FAMS.csproj",
-        "packagesPath": "C:\\Users\\CAPYPSO\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\CAPYPSO\\Documents\\WORKSPACE\\DEV\\net03_group02\\obj\\",
+        "projectPath": "C:\\Users\\TuanLoc\\Documents\\OJT_FA_NET_03\\net03_group02\\FAMS.csproj",
+        "packagesPath": "C:\\Users\\TuanLoc\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\TuanLoc\\Documents\\OJT_FA_NET_03\\net03_group02\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
         ],
         "configFilePaths": [
-          "C:\\Users\\CAPYPSO\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\TuanLoc\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
@@ -117,7 +117,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.403\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.404\\RuntimeIdentifierGraph.json"
         }
       }
     }
