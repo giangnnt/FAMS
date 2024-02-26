@@ -4,35 +4,21 @@ using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 
 namespace FAMS.Migrations
 {
-    public partial class FAMS03 : Migration
+    public partial class FAMS : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.CreateTable(
-                name: "OutputStandards",
-                columns: table => new
-                {
-                    OutputStandardId = table.Column<Guid>(type: "uuid", nullable: false),
-                    Name = table.Column<string>(type: "text", nullable: false),
-                    Type = table.Column<string>(type: "text", nullable: true),
-                    Description = table.Column<string>(type: "text", nullable: true)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_OutputStandards", x => x.OutputStandardId);
-                });
-
-            migrationBuilder.CreateTable(
                 name: "Permissions",
                 columns: table => new
                 {
-                    PermissionId = table.Column<string>(type: "text", nullable: false),
+                    Permissionid = table.Column<string>(type: "text", nullable: false),
                     Name = table.Column<string>(type: "text", nullable: false),
                     Description = table.Column<string>(type: "text", nullable: true)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Permissions", x => x.PermissionId);
+                    table.PrimaryKey("PK_Permissions", x => x.Permissionid);
                 });
 
             migrationBuilder.CreateTable(
@@ -53,17 +39,17 @@ namespace FAMS.Migrations
                 name: "PermissionRole",
                 columns: table => new
                 {
-                    PermissionsPermissionId = table.Column<string>(type: "text", nullable: false),
+                    PermissionsPermissionid = table.Column<string>(type: "text", nullable: false),
                     RolesId = table.Column<int>(type: "integer", nullable: false)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_PermissionRole", x => new { x.PermissionsPermissionId, x.RolesId });
+                    table.PrimaryKey("PK_PermissionRole", x => new { x.PermissionsPermissionid, x.RolesId });
                     table.ForeignKey(
-                        name: "FK_PermissionRole_Permissions_PermissionsPermissionId",
-                        column: x => x.PermissionsPermissionId,
+                        name: "FK_PermissionRole_Permissions_PermissionsPermissionid",
+                        column: x => x.PermissionsPermissionid,
                         principalTable: "Permissions",
-                        principalColumn: "PermissionId",
+                        principalColumn: "Permissionid",
                         onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
                         name: "FK_PermissionRole_Roles_RolesId",
@@ -104,12 +90,11 @@ namespace FAMS.Migrations
                 name: "Syllabuses",
                 columns: table => new
                 {
-                    SyllabusId = table.Column<Guid>(type: "uuid", nullable: false),
-                    TopicCode = table.Column<string>(type: "text", nullable: false),
+                    TopicCode = table.Column<Guid>(type: "uuid", nullable: false),
                     TopicName = table.Column<string>(type: "text", nullable: false),
                     Version = table.Column<int>(type: "integer", nullable: false),
                     Level = table.Column<string>(type: "text", nullable: true),
-                    TrainingAudience = table.Column<int>(type: "integer", nullable: false),
+                    TrainingAudience = table.Column<string>(type: "text", nullable: false),
                     TechnicalRequirement = table.Column<string>(type: "text", nullable: true),
                     CourseObjective = table.Column<string>(type: "text", nullable: true),
                     TimeLocation = table.Column<string>(type: "text", nullable: true),
@@ -122,7 +107,7 @@ namespace FAMS.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Syllabuses", x => x.SyllabusId);
+                    table.PrimaryKey("PK_Syllabuses", x => x.TopicCode);
                     table.ForeignKey(
                         name: "FK_Syllabuses_Users_CreatedByUserId",
                         column: x => x.CreatedByUserId,
@@ -157,56 +142,32 @@ namespace FAMS.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "AsessmentSchemes",
-                columns: table => new
-                {
-                    Id = table.Column<int>(type: "integer", nullable: false)
-                        .Annotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn),
-                    Quiz = table.Column<int>(type: "integer", nullable: true),
-                    Assigment = table.Column<int>(type: "integer", nullable: true),
-                    Final = table.Column<int>(type: "integer", nullable: true),
-                    Finaltheory = table.Column<int>(type: "integer", nullable: true),
-                    Finalpratical = table.Column<int>(type: "integer", nullable: true),
-                    Gpa = table.Column<int>(type: "integer", nullable: true),
-                    SyllabusId = table.Column<Guid>(type: "uuid", nullable: false)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_AsessmentSchemes", x => x.Id);
-                    table.ForeignKey(
-                        name: "FK_AsessmentSchemes_Syllabuses_SyllabusId",
-                        column: x => x.SyllabusId,
-                        principalTable: "Syllabuses",
-                        principalColumn: "SyllabusId",
-                        onDelete: ReferentialAction.Cascade);
-                });
-
-            migrationBuilder.CreateTable(
                 name: "TrainingUnits",
                 columns: table => new
                 {
                     UnitCode = table.Column<Guid>(type: "uuid", nullable: false),
                     UnitName = table.Column<string>(type: "text", nullable: true),
                     DayNumber = table.Column<int>(type: "integer", nullable: true),
-                    SyllabusId = table.Column<Guid>(type: "uuid", nullable: false)
+                    Topiccode = table.Column<string>(type: "text", nullable: true),
+                    SyllabusTopicCode = table.Column<Guid>(type: "uuid", nullable: true)
                 },
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_TrainingUnits", x => x.UnitCode);
                     table.ForeignKey(
-                        name: "FK_TrainingUnits_Syllabuses_SyllabusId",
-                        column: x => x.SyllabusId,
+                        name: "FK_TrainingUnits_Syllabuses_SyllabusTopicCode",
+                        column: x => x.SyllabusTopicCode,
                         principalTable: "Syllabuses",
-                        principalColumn: "SyllabusId",
-                        onDelete: ReferentialAction.Cascade);
+                        principalColumn: "TopicCode",
+                        onDelete: ReferentialAction.Restrict);
                 });
 
             migrationBuilder.CreateTable(
-                name: "Classes",
+                name: "Class",
                 columns: table => new
                 {
                     ClassId = table.Column<Guid>(type: "uuid", nullable: false),
-                    TrainingProgramCode = table.Column<Guid>(type: "uuid", nullable: false),
+                    TrainingProgramcode = table.Column<Guid>(type: "uuid", nullable: false),
                     ClassName = table.Column<string>(type: "text", nullable: false),
                     ClassCode = table.Column<string>(type: "text", nullable: true),
                     Duration = table.Column<TimeSpan>(type: "interval", nullable: true),
@@ -219,14 +180,14 @@ namespace FAMS.Migrations
                     CreatedAt = table.Column<DateTime>(type: "timestamp without time zone", nullable: false),
                     ModifiedBy = table.Column<Guid>(type: "uuid", nullable: true),
                     ModifiedAt = table.Column<DateTime>(type: "timestamp without time zone", nullable: true),
-                    TrainingProgramCode1 = table.Column<Guid>(type: "uuid", nullable: false)
+                    TrainingProgramCode = table.Column<Guid>(type: "uuid", nullable: false)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Classes", x => x.ClassId);
+                    table.PrimaryKey("PK_Class", x => x.ClassId);
                     table.ForeignKey(
-                        name: "FK_Classes_TrainingPrograms_TrainingProgramCode1",
-                        column: x => x.TrainingProgramCode1,
+                        name: "FK_Class_TrainingPrograms_TrainingProgramCode",
+                        column: x => x.TrainingProgramCode,
                         principalTable: "TrainingPrograms",
                         principalColumn: "TrainingProgramCode",
                         onDelete: ReferentialAction.Cascade);
@@ -236,19 +197,20 @@ namespace FAMS.Migrations
                 name: "TrainingProgramSyllabuses",
                 columns: table => new
                 {
-                    SyllabusId = table.Column<Guid>(type: "uuid", nullable: false),
+                    TopicCode = table.Column<Guid>(type: "uuid", nullable: false),
                     TrainingProgramCode = table.Column<Guid>(type: "uuid", nullable: false),
                     Sequence = table.Column<string>(type: "text", nullable: true),
+                    SyllabusTopicCode = table.Column<Guid>(type: "uuid", nullable: false),
                     TrainingProgramCode1 = table.Column<Guid>(type: "uuid", nullable: false)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_TrainingProgramSyllabuses", x => new { x.SyllabusId, x.TrainingProgramCode });
+                    table.PrimaryKey("PK_TrainingProgramSyllabuses", x => new { x.TopicCode, x.TrainingProgramCode });
                     table.ForeignKey(
-                        name: "FK_TrainingProgramSyllabuses_Syllabuses_SyllabusId",
-                        column: x => x.SyllabusId,
+                        name: "FK_TrainingProgramSyllabuses_Syllabuses_SyllabusTopicCode",
+                        column: x => x.SyllabusTopicCode,
                         principalTable: "Syllabuses",
-                        principalColumn: "SyllabusId",
+                        principalColumn: "TopicCode",
                         onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
                         name: "FK_TrainingProgramSyllabuses_TrainingPrograms_TrainingProgramC~",
@@ -264,22 +226,16 @@ namespace FAMS.Migrations
                 {
                     TrainingContentId = table.Column<Guid>(type: "uuid", nullable: false),
                     ContentName = table.Column<string>(type: "text", nullable: false),
+                    OutputStandard = table.Column<string>(type: "text", nullable: true),
                     Trainingtime = table.Column<TimeSpan>(type: "interval", nullable: true),
                     Method = table.Column<int>(type: "integer", nullable: false),
                     DeliveryType = table.Column<int>(type: "integer", nullable: true),
                     UnitCode = table.Column<Guid>(type: "uuid", nullable: false),
-                    TrainingUnitUnitCode = table.Column<Guid>(type: "uuid", nullable: false),
-                    OutputStandardId = table.Column<Guid>(type: "uuid", nullable: true)
+                    TrainingUnitUnitCode = table.Column<Guid>(type: "uuid", nullable: false)
                 },
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_TrainingContents", x => x.TrainingContentId);
-                    table.ForeignKey(
-                        name: "FK_TrainingContents_OutputStandards_OutputStandardId",
-                        column: x => x.OutputStandardId,
-                        principalTable: "OutputStandards",
-                        principalColumn: "OutputStandardId",
-                        onDelete: ReferentialAction.Restrict);
                     table.ForeignKey(
                         name: "FK_TrainingContents_TrainingUnits_TrainingUnitUnitCode",
                         column: x => x.TrainingUnitUnitCode,
@@ -292,14 +248,13 @@ namespace FAMS.Migrations
                 name: "TrainingMaterials",
                 columns: table => new
                 {
-                    MaterialId = table.Column<Guid>(type: "uuid", nullable: false),
-                    Fileupload = table.Column<string>(type: "text", nullable: true),
-                    UnitCode = table.Column<string>(type: "text", nullable: true),
+                    Fileupload = table.Column<string>(type: "text", nullable: false),
+                    Unitcode = table.Column<string>(type: "text", nullable: true),
                     TrainingUnitUnitCode = table.Column<Guid>(type: "uuid", nullable: true)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_TrainingMaterials", x => x.MaterialId);
+                    table.PrimaryKey("PK_TrainingMaterials", x => x.Fileupload);
                     table.ForeignKey(
                         name: "FK_TrainingMaterials_TrainingUnits_TrainingUnitUnitCode",
                         column: x => x.TrainingUnitUnitCode,
@@ -320,9 +275,9 @@ namespace FAMS.Migrations
                 {
                     table.PrimaryKey("PK_ClassUsers", x => new { x.ClassId, x.UserId });
                     table.ForeignKey(
-                        name: "FK_ClassUsers_Classes_ClassId",
+                        name: "FK_ClassUsers_Class_ClassId",
                         column: x => x.ClassId,
-                        principalTable: "Classes",
+                        principalTable: "Class",
                         principalColumn: "ClassId",
                         onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
@@ -359,11 +314,11 @@ namespace FAMS.Migrations
                 columns: table => new
                 {
                     LearningObjectivesLearningObjectiveCode = table.Column<Guid>(type: "uuid", nullable: false),
-                    SyllabusesSyllabusId = table.Column<Guid>(type: "uuid", nullable: false)
+                    SyllabusesTopicCode = table.Column<Guid>(type: "uuid", nullable: false)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_LearningObjectiveSyllabus", x => new { x.LearningObjectivesLearningObjectiveCode, x.SyllabusesSyllabusId });
+                    table.PrimaryKey("PK_LearningObjectiveSyllabus", x => new { x.LearningObjectivesLearningObjectiveCode, x.SyllabusesTopicCode });
                     table.ForeignKey(
                         name: "FK_LearningObjectiveSyllabus_LearningObjectives_LearningObject~",
                         column: x => x.LearningObjectivesLearningObjectiveCode,
@@ -371,22 +326,17 @@ namespace FAMS.Migrations
                         principalColumn: "LearningObjectiveCode",
                         onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
-                        name: "FK_LearningObjectiveSyllabus_Syllabuses_SyllabusesSyllabusId",
-                        column: x => x.SyllabusesSyllabusId,
+                        name: "FK_LearningObjectiveSyllabus_Syllabuses_SyllabusesTopicCode",
+                        column: x => x.SyllabusesTopicCode,
                         principalTable: "Syllabuses",
-                        principalColumn: "SyllabusId",
+                        principalColumn: "TopicCode",
                         onDelete: ReferentialAction.Cascade);
                 });
 
             migrationBuilder.CreateIndex(
-                name: "IX_AsessmentSchemes_SyllabusId",
-                table: "AsessmentSchemes",
-                column: "SyllabusId");
-
-            migrationBuilder.CreateIndex(
-                name: "IX_Classes_TrainingProgramCode1",
-                table: "Classes",
-                column: "TrainingProgramCode1");
+                name: "IX_Class_TrainingProgramCode",
+                table: "Class",
+                column: "TrainingProgramCode");
 
             migrationBuilder.CreateIndex(
                 name: "IX_ClassUsers_UserId",
@@ -399,9 +349,9 @@ namespace FAMS.Migrations
                 column: "TrainingContentId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_LearningObjectiveSyllabus_SyllabusesSyllabusId",
+                name: "IX_LearningObjectiveSyllabus_SyllabusesTopicCode",
                 table: "LearningObjectiveSyllabus",
-                column: "SyllabusesSyllabusId");
+                column: "SyllabusesTopicCode");
 
             migrationBuilder.CreateIndex(
                 name: "IX_PermissionRole_RolesId",
@@ -412,11 +362,6 @@ namespace FAMS.Migrations
                 name: "IX_Syllabuses_CreatedByUserId",
                 table: "Syllabuses",
                 column: "CreatedByUserId");
-
-            migrationBuilder.CreateIndex(
-                name: "IX_TrainingContents_OutputStandardId",
-                table: "TrainingContents",
-                column: "OutputStandardId");
 
             migrationBuilder.CreateIndex(
                 name: "IX_TrainingContents_TrainingUnitUnitCode",
@@ -434,14 +379,19 @@ namespace FAMS.Migrations
                 column: "UserId");
 
             migrationBuilder.CreateIndex(
+                name: "IX_TrainingProgramSyllabuses_SyllabusTopicCode",
+                table: "TrainingProgramSyllabuses",
+                column: "SyllabusTopicCode");
+
+            migrationBuilder.CreateIndex(
                 name: "IX_TrainingProgramSyllabuses_TrainingProgramCode1",
                 table: "TrainingProgramSyllabuses",
                 column: "TrainingProgramCode1");
 
             migrationBuilder.CreateIndex(
-                name: "IX_TrainingUnits_SyllabusId",
+                name: "IX_TrainingUnits_SyllabusTopicCode",
                 table: "TrainingUnits",
-                column: "SyllabusId");
+                column: "SyllabusTopicCode");
 
             migrationBuilder.CreateIndex(
                 name: "IX_Users_Roleid",
@@ -451,9 +401,6 @@ namespace FAMS.Migrations
 
         protected override void Down(MigrationBuilder migrationBuilder)
         {
-            migrationBuilder.DropTable(
-                name: "AsessmentSchemes");
-
             migrationBuilder.DropTable(
                 name: "ClassUsers");
 
@@ -470,7 +417,7 @@ namespace FAMS.Migrations
                 name: "TrainingProgramSyllabuses");
 
             migrationBuilder.DropTable(
-                name: "Classes");
+                name: "Class");
 
             migrationBuilder.DropTable(
                 name: "LearningObjectives");
@@ -483,9 +430,6 @@ namespace FAMS.Migrations
 
             migrationBuilder.DropTable(
                 name: "TrainingContents");
-
-            migrationBuilder.DropTable(
-                name: "OutputStandards");
 
             migrationBuilder.DropTable(
                 name: "TrainingUnits");

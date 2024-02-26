@@ -24,6 +24,6 @@ namespace net03_group02.src.Domain.Training
 
         public User.User User { get; set; } = null!;
         public List<Class> Classes { get; set; } = new();
-        public List<TrainingProgramSyllabus> TrainingProgramSyllabuses { get; set; } = new();
+        public List<TrainingProgramSyllabus> TrainingProgramSyllabus { get; set; } = new();
     }
 }

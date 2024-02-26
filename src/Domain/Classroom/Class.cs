@@ -10,7 +10,7 @@ public partial class Class
 {
     [Key]
     public Guid ClassId { get; set; }
-    public Guid TrainingProgramCode { get; set; }
+    public Guid TrainingProgramcode { get; set; }
     public string ClassName { get; set; } = null!;
     public string? ClassCode { get; set; }
     public TimeSpan? Duration { get; set; }

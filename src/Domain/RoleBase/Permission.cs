@@ -6,7 +6,7 @@ namespace net03_group02.src.Domain.RoleBase;
 public class Permission
 {
     [Key]
-    public string PermissionId { get; set; } = null!;
+    public string Permissionid { get; set; } = null!;
     public string Name { get; set; } = null!;
     public string? Description { get; set; }
 

@@ -13,7 +13,7 @@ namespace net03_group02.src.Domain.Training
         public Guid UnitCode { get; set; }
         public string UnitName { get; set; } = null!;
         public int? DayNumber { get; set; }
-        public Guid SyllabusId { get; set; }
+        public string Topiccode { get; set; }
 
         public Syllabus.Syllabus Syllabus { get; set; } = null!;
         public List<TrainingContent> TrainingContents { get; set; } = new();
