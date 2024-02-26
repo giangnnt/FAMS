@@ -17,7 +17,7 @@ namespace net03_group02.src.Domain.Syllabus
         public string TopicName { get; set; } = null!;
         public int Version { get; set; }
         public string? Level { get; set; }
-        public string TrainingAudience { get; set; } = "0";
+        public int TrainingAudience { get; set; }
         public string? TechnicalRequirement { get; set; }
         public string? CourseObjective { get; set; }
         public string? TimeLocation { get; set; }

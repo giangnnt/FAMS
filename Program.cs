@@ -1,9 +1,17 @@
 using Microsoft.EntityFrameworkCore;
+using net03_group02.src;
 
 var builder = WebApplication.CreateBuilder(args);
 //Add bearer
 builder.Services.AddAuthorization();
 builder.Services.AddAuthentication("Bearer").AddJwtBearer();
+
+builder.Services.AddDbContext<FAMSContext>(options =>
+{
+  // log the connection string
+  Console.WriteLine($"Connection string: {builder.Configuration.GetConnectionString("DatabaseConnection")}");
+  options.UseNpgsql(builder.Configuration.GetConnectionString("DatabaseConnection"));
+});
 
 builder.Services.AddDbContext<FAMSContext>();
 // Add services to the container.

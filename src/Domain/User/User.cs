@@ -29,6 +29,6 @@ namespace net03_group02.src.Domain.User
         public Role Role {get; set;} = null!;
         public List<ClassUser> ClassUsers {get; set;} = null!;
         public List<Syllabus.Syllabus> Syllabbuses { get; set; } = new();
-        public List<TrainingProgram> Trainingprograms { get; set; } = new();
+        public List<TrainingProgram> TrainingPrograms { get; set; } = new();
     }
 }
