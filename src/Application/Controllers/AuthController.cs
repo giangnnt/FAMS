@@ -11,10 +11,15 @@ namespace net03_group02.src.Application.Controllers
     [Route("api/[controller]")]
     public class AuthController : ControllerBase
     {
-        // [HttpPost("login")]
-        // public IActionResult Login([FromBody] LoginReq req)
-        // {
-
-        // }
+        private readonly FAMSContext _dbContext;
+        public AuthController(FAMSContext dbContext)
+        {
+            _dbContext = dbContext;
+        }
+        [HttpPost("login")]
+        public IActionResult Login([FromBody] LoginReq req)
+        {
+            
+        }
     }
 }
