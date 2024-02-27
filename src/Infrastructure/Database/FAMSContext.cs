@@ -2,12 +2,12 @@
 using System.ComponentModel.DataAnnotations;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata;
-using net03_group02.src.Domain.Asessment;
-using net03_group02.src.Domain.Classroom;
-using net03_group02.src.Domain.RoleBase;
-using net03_group02.src.Domain.Syllabus;
-using net03_group02.src.Domain.Training;
-using net03_group02.src.Domain.User;
+using FAMS.src.Domain.Asessment;
+using FAMS.src.Domain.Classroom;
+using FAMS.src.Domain.RoleBase;
+using FAMS.src.Domain.Syllabus;
+using FAMS.src.Domain.Training;
+using FAMS.src.Domain.User;
 
 #nullable disable
 

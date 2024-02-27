@@ -1,11 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
-using net03_group02.src.Domain.Syllabus;
+using FAMS.src.Domain.Syllabus;
 
 #nullable disable
 
-namespace net03_group02.src.Domain.Training
+namespace FAMS.src.Domain.Training
 {
     public partial class TrainingUnit
     {

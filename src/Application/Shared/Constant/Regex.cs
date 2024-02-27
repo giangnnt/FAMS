@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace net03_group02.src.Application.Shared.Constant
+namespace FAMS.src.Application.Shared.Constant
 {
     public static class RegexConst
     {

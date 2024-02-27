@@ -3,11 +3,11 @@ using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Threading.Tasks;
-using net03_group02.src.Domain.Asessment;
-using net03_group02.src.Domain.Training;
-using net03_group02.src.Domain.User;
+using FAMS.src.Domain.Asessment;
+using FAMS.src.Domain.Training;
+using FAMS.src.Domain.User;
 
-namespace net03_group02.src.Domain.Syllabus
+namespace FAMS.src.Domain.Syllabus
 {
     public class Syllabus
     {

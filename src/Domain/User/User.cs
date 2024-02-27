@@ -1,14 +1,14 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
-using net03_group02.src.Application.Shared.Enum;
-using net03_group02.src.Domain;
-using net03_group02.src.Domain.Classroom;
-using net03_group02.src.Domain.RoleBase;
-using net03_group02.src.Domain.Syllabus;
-using net03_group02.src.Domain.Training;
+using FAMS.src.Application.Shared.Enum;
+using FAMS.src.Domain;
+using FAMS.src.Domain.Classroom;
+using FAMS.src.Domain.RoleBase;
+using FAMS.src.Domain.Syllabus;
+using FAMS.src.Domain.Training;
 
-namespace net03_group02.src.Domain.User
+namespace FAMS.src.Domain.User
 {
     public class User
     {

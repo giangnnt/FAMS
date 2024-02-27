@@ -3,7 +3,7 @@ using System.Collections.Generic;
 
 #nullable disable
 
-namespace net03_group02.src.Domain.Classroom;
+namespace FAMS.src.Domain.Classroom;
 public partial class ClassUser
 {
     public Guid UserId { get; set; }

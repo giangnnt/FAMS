@@ -4,7 +4,7 @@ using System.ComponentModel.DataAnnotations;
 
 #nullable disable
 
-namespace net03_group02.src.Domain.Training
+namespace FAMS.src.Domain.Training
 {
     public partial class TrainingMaterial
     {

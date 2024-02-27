@@ -1,13 +1,13 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
-using net03_group02.src.Application.Shared.Enum;
-using net03_group02.src.Domain.Classroom;
-using net03_group02.src.Domain.User;
+using FAMS.src.Application.Shared.Enum;
+using FAMS.src.Domain.Classroom;
+using FAMS.src.Domain.User;
 
 #nullable disable
 
-namespace net03_group02.src.Domain.Training
+namespace FAMS.src.Domain.Training
 {
     public partial class TrainingProgram
     {

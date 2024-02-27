@@ -4,9 +4,9 @@ using System.IdentityModel.Tokens.Jwt;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using net03_group02.src.Application.Shared.Enum;
+using FAMS.src.Application.Shared.Enum;
 
-namespace net03_group02.src.Application.Core.Jwt
+namespace FAMS.src.Application.Core.Jwt
 {
     public interface IJwtService
     {

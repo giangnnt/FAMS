@@ -1,4 +1,4 @@
-namespace net03_group02.src.Application.Shared.Enum
+namespace FAMS.src.Application.Shared.Enum
 {
     public enum TrainingContentDeliveryTypeEnum
     {

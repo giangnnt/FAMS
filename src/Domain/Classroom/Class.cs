@@ -1,10 +1,10 @@
 ﻿
 using System.ComponentModel.DataAnnotations;
-using net03_group02.src.Application.Shared.Enum;
-using net03_group02.src.Domain.Training;
-using net03_group02.src.Domain.User;
+using FAMS.src.Application.Shared.Enum;
+using FAMS.src.Domain.Training;
+using FAMS.src.Domain.User;
 
-namespace net03_group02.src.Domain.Classroom;
+namespace FAMS.src.Domain.Classroom;
 
 public partial class Class
 {

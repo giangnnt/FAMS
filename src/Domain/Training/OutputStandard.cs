@@ -4,7 +4,7 @@ using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace net03_group02.src.Domain.Training
+namespace FAMS.src.Domain.Training
 {
     public class OutputStandard
     {

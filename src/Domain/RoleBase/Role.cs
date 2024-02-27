@@ -2,10 +2,10 @@
 using System.Collections.Generic;
 
 
-namespace net03_group02.src.Domain.RoleBase;
+namespace FAMS.src.Domain.RoleBase;
 
 using System.ComponentModel.DataAnnotations;
-using net03_group02.src.Domain.User;
+using FAMS.src.Domain.User;
 public class Role
 {
     [Key]

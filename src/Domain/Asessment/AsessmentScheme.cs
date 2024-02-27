@@ -1,6 +1,6 @@
 ﻿using System.ComponentModel.DataAnnotations;
 
-namespace net03_group02.src.Domain.Asessment;
+namespace FAMS.src.Domain.Asessment;
 
 public partial class AsessmentScheme
 {

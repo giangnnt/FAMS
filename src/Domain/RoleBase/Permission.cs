@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 
-namespace net03_group02.src.Domain.RoleBase;
+namespace FAMS.src.Domain.RoleBase;
 public class Permission
 {
     [Key]

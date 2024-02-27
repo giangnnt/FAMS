@@ -2,9 +2,9 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using net03_group02.src.Application.Shared.Enum;
+using FAMS.src.Application.Shared.Enum;
 
-namespace net03_group02.src.Application.Core
+namespace FAMS.src.Application.Core
 {
     public class Payload
     {

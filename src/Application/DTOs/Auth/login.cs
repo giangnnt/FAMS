@@ -3,9 +3,9 @@ using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Threading.Tasks;
-using net03_group02.src.Application.Shared.Constant;
+using FAMS.src.Application.Shared.Constant;
 
-namespace net03_group02.src.Application.DTOs;
+namespace FAMS.src.Application.DTOs;
 public class LoginReq
 {
         [Required]
