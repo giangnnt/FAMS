@@ -101,3 +101,4 @@ C:\Users\CAPYPSO\Documents\WORKSPACE\DEV\net03_group02\obj\Debug\net7.0\scopedcs
 C:\Users\CAPYPSO\Documents\WORKSPACE\DEV\net03_group02\obj\Debug\net7.0\FAMS.csproj.CopyComplete
 C:\Users\CAPYPSO\Documents\WORKSPACE\DEV\net03_group02\obj\Debug\net7.0\FAMS.genruntimeconfig.cache
 C:\Users\CAPYPSO\Documents\WORKSPACE\DEV\net03_group02\obj\Debug\net7.0\ref\FAMS.dll
+C:\Users\CAPYPSO\Documents\WORKSPACE\DEV\net03_group02\bin\Debug\net7.0\BCrypt.Net-Next.dll

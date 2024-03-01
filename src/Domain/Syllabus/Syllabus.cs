@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using FAMS.src.Domain.Asessment;
 using FAMS.src.Domain.Training;
 using FAMS.src.Domain.User;
+using net03_group02.src.Application.Shared.Enum;
 
 namespace FAMS.src.Domain.Syllabus
 {
@@ -26,6 +27,7 @@ namespace FAMS.src.Domain.Syllabus
         public DateTime CreatedAt { get; set; }
         public Guid? ModifiedBy { get; set; }
         public DateTime? ModifiedAt { get; set; }
+        public SyllabusStatusEnum Status { get; set; }
 
         public User.User CreatedByUser { get; set; } = null!;
         public List<TrainingUnit> TrainingUnits { get; set; } = new();

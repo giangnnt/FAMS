@@ -18,37 +18,7 @@ namespace FAMS.Migrations
                 .HasAnnotation("ProductVersion", "5.0.17")
                 .HasAnnotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn);
 
-            modelBuilder.Entity("LearningObjectiveSyllabus", b =>
-                {
-                    b.Property<Guid>("LearningObjectivesLearningObjectiveCode")
-                        .HasColumnType("uuid");
-
-                    b.Property<Guid>("SyllabusesSyllabusId")
-                        .HasColumnType("uuid");
-
-                    b.HasKey("LearningObjectivesLearningObjectiveCode", "SyllabusesSyllabusId");
-
-                    b.HasIndex("SyllabusesSyllabusId");
-
-                    b.ToTable("LearningObjectiveSyllabus");
-                });
-
-            modelBuilder.Entity("PermissionRole", b =>
-                {
-                    b.Property<string>("PermissionsPermissionid")
-                        .HasColumnType("text");
-
-                    b.Property<int>("RolesId")
-                        .HasColumnType("integer");
-
-                    b.HasKey("PermissionsPermissionid", "RolesId");
-
-                    b.HasIndex("RolesId");
-
-                    b.ToTable("PermissionRole");
-                });
-
-            modelBuilder.Entity("net03_group02.src.Domain.Asessment.AsessmentScheme", b =>
+            modelBuilder.Entity("FAMS.src.Domain.Asessment.AsessmentScheme", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -83,7 +53,7 @@ namespace FAMS.Migrations
                     b.ToTable("AsessmentScheme");
                 });
 
-            modelBuilder.Entity("net03_group02.src.Domain.Classroom.Class", b =>
+            modelBuilder.Entity("FAMS.src.Domain.Classroom.Class", b =>
                 {
                     b.Property<Guid>("ClassId")
                         .ValueGeneratedOnAdd()
@@ -123,8 +93,9 @@ namespace FAMS.Migrations
                     b.Property<DateTime?>("StartDate")
                         .HasColumnType("timestamp without time zone");
 
-                    b.Property<int>("Status")
-                        .HasColumnType("integer");
+                    b.Property<string>("Status")
+                        .IsRequired()
+                        .HasColumnType("text");
 
                     b.Property<Guid>("TrainingProgramCode")
                         .HasColumnType("uuid");
@@ -139,7 +110,7 @@ namespace FAMS.Migrations
                     b.ToTable("Class");
                 });
 
-            modelBuilder.Entity("net03_group02.src.Domain.Classroom.ClassUser", b =>
+            modelBuilder.Entity("FAMS.src.Domain.Classroom.ClassUser", b =>
                 {
                     b.Property<Guid>("ClassId")
                         .HasColumnType("uuid");
@@ -157,7 +128,7 @@ namespace FAMS.Migrations
                     b.ToTable("ClassUsers");
                 });
 
-            modelBuilder.Entity("net03_group02.src.Domain.RoleBase.Permission", b =>
+            modelBuilder.Entity("FAMS.src.Domain.RoleBase.Permission", b =>
                 {
                     b.Property<string>("Permissionid")
                         .HasColumnType("text");
@@ -174,7 +145,7 @@ namespace FAMS.Migrations
                     b.ToTable("Permissions");
                 });
 
-            modelBuilder.Entity("net03_group02.src.Domain.RoleBase.Role", b =>
+            modelBuilder.Entity("FAMS.src.Domain.RoleBase.Role", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -191,9 +162,17 @@ namespace FAMS.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("Roles");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 1,
+                            Description = "Admin",
+                            Name = "ADMIN"
+                        });
                 });
 
-            modelBuilder.Entity("net03_group02.src.Domain.Syllabus.Syllabus", b =>
+            modelBuilder.Entity("FAMS.src.Domain.Syllabus.Syllabus", b =>
                 {
                     b.Property<Guid>("SyllabusId")
                         .ValueGeneratedOnAdd()
@@ -223,6 +202,10 @@ namespace FAMS.Migrations
                     b.Property<Guid?>("ModifiedBy")
                         .HasColumnType("uuid");
 
+                    b.Property<string>("Status")
+                        .IsRequired()
+                        .HasColumnType("text");
+
                     b.Property<string>("TechnicalRequirement")
                         .HasColumnType("text");
 
@@ -251,7 +234,7 @@ namespace FAMS.Migrations
                     b.ToTable("Syllabuses");
                 });
 
-            modelBuilder.Entity("net03_group02.src.Domain.Training.LearningObjective", b =>
+            modelBuilder.Entity("FAMS.src.Domain.Training.LearningObjective", b =>
                 {
                     b.Property<Guid>("LearningObjectiveCode")
                         .ValueGeneratedOnAdd()
@@ -277,7 +260,7 @@ namespace FAMS.Migrations
                     b.ToTable("LearningObjectives");
                 });
 
-            modelBuilder.Entity("net03_group02.src.Domain.Training.OutputStandard", b =>
+            modelBuilder.Entity("FAMS.src.Domain.Training.OutputStandard", b =>
                 {
                     b.Property<Guid>("OutputStandardId")
                         .ValueGeneratedOnAdd()
@@ -298,7 +281,7 @@ namespace FAMS.Migrations
                     b.ToTable("OutputStandard");
                 });
 
-            modelBuilder.Entity("net03_group02.src.Domain.Training.TrainingContent", b =>
+            modelBuilder.Entity("FAMS.src.Domain.Training.TrainingContent", b =>
                 {
                     b.Property<Guid>("TrainingContentId")
                         .ValueGeneratedOnAdd()
@@ -308,11 +291,12 @@ namespace FAMS.Migrations
                         .IsRequired()
                         .HasColumnType("text");
 
-                    b.Property<int?>("DeliveryType")
-                        .HasColumnType("integer");
+                    b.Property<string>("DeliveryType")
+                        .HasColumnType("text");
 
-                    b.Property<int>("Method")
-                        .HasColumnType("integer");
+                    b.Property<string>("Method")
+                        .IsRequired()
+                        .HasColumnType("text");
 
                     b.Property<Guid?>("OutputStandardId")
                         .HasColumnType("uuid");
@@ -335,7 +319,7 @@ namespace FAMS.Migrations
                     b.ToTable("TrainingContents");
                 });
 
-            modelBuilder.Entity("net03_group02.src.Domain.Training.TrainingMaterial", b =>
+            modelBuilder.Entity("FAMS.src.Domain.Training.TrainingMaterial", b =>
                 {
                     b.Property<string>("Fileupload")
                         .HasColumnType("text");
@@ -353,7 +337,7 @@ namespace FAMS.Migrations
                     b.ToTable("TrainingMaterials");
                 });
 
-            modelBuilder.Entity("net03_group02.src.Domain.Training.TrainingProgram", b =>
+            modelBuilder.Entity("FAMS.src.Domain.Training.TrainingProgram", b =>
                 {
                     b.Property<Guid>("TrainingProgramCode")
                         .ValueGeneratedOnAdd()
@@ -377,8 +361,9 @@ namespace FAMS.Migrations
                     b.Property<string>("Name")
                         .HasColumnType("text");
 
-                    b.Property<int>("Status")
-                        .HasColumnType("integer");
+                    b.Property<string>("Status")
+                        .IsRequired()
+                        .HasColumnType("text");
 
                     b.Property<Guid>("UserId")
                         .HasColumnType("uuid");
@@ -390,7 +375,7 @@ namespace FAMS.Migrations
                     b.ToTable("TrainingPrograms");
                 });
 
-            modelBuilder.Entity("net03_group02.src.Domain.Training.TrainingProgramSyllabus", b =>
+            modelBuilder.Entity("FAMS.src.Domain.Training.TrainingProgramSyllabus", b =>
                 {
                     b.Property<Guid>("TopicCode")
                         .HasColumnType("uuid");
@@ -416,7 +401,7 @@ namespace FAMS.Migrations
                     b.ToTable("TrainingProgramSyllabuses");
                 });
 
-            modelBuilder.Entity("net03_group02.src.Domain.Training.TrainingUnit", b =>
+            modelBuilder.Entity("FAMS.src.Domain.Training.TrainingUnit", b =>
                 {
                     b.Property<Guid>("UnitCode")
                         .ValueGeneratedOnAdd()
@@ -441,7 +426,7 @@ namespace FAMS.Migrations
                     b.ToTable("TrainingUnits");
                 });
 
-            modelBuilder.Entity("net03_group02.src.Domain.User.User", b =>
+            modelBuilder.Entity("FAMS.src.Domain.User.User", b =>
                 {
                     b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd()
@@ -457,8 +442,8 @@ namespace FAMS.Migrations
                         .IsRequired()
                         .HasColumnType("text");
 
-                    b.Property<int?>("Gender")
-                        .HasColumnType("integer");
+                    b.Property<string>("Gender")
+                        .HasColumnType("text");
 
                     b.Property<string>("Name")
                         .IsRequired()
@@ -471,55 +456,69 @@ namespace FAMS.Migrations
                     b.Property<string>("Phone")
                         .HasColumnType("text");
 
-                    b.Property<int>("Roleid")
+                    b.Property<int>("RoleId")
                         .HasColumnType("integer");
 
-                    b.Property<int>("Status")
-                        .HasColumnType("integer");
+                    b.Property<string>("Status")
+                        .IsRequired()
+                        .HasColumnType("text");
 
                     b.Property<DateTime>("UpdateAt")
                         .HasColumnType("timestamp without time zone");
 
                     b.HasKey("Id");
 
-                    b.HasIndex("Roleid");
+                    b.HasIndex("RoleId");
 
                     b.ToTable("Users");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = new Guid("00000000-0000-0000-0000-000000012345"),
+                            Createdat = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Email = "FAMS@gmail.com",
+                            Name = "Admin FAMS",
+                            Password = "$2a$11$5rrlnh5BJOlKBTMsrv1jT.2Qj462vbtWc5subwcLR4tPiy1ma.QKe",
+                            RoleId = 1,
+                            Status = "Inactive",
+                            UpdateAt = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified)
+                        });
                 });
 
             modelBuilder.Entity("LearningObjectiveSyllabus", b =>
                 {
-                    b.HasOne("net03_group02.src.Domain.Training.LearningObjective", null)
-                        .WithMany()
-                        .HasForeignKey("LearningObjectivesLearningObjectiveCode")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
+                    b.Property<Guid>("LearningObjectivesLearningObjectiveCode")
+                        .HasColumnType("uuid");
 
-                    b.HasOne("net03_group02.src.Domain.Syllabus.Syllabus", null)
-                        .WithMany()
-                        .HasForeignKey("SyllabusesSyllabusId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
+                    b.Property<Guid>("SyllabusesSyllabusId")
+                        .HasColumnType("uuid");
+
+                    b.HasKey("LearningObjectivesLearningObjectiveCode", "SyllabusesSyllabusId");
+
+                    b.HasIndex("SyllabusesSyllabusId");
+
+                    b.ToTable("LearningObjectiveSyllabus");
                 });
 
             modelBuilder.Entity("PermissionRole", b =>
                 {
-                    b.HasOne("net03_group02.src.Domain.RoleBase.Permission", null)
-                        .WithMany()
-                        .HasForeignKey("PermissionsPermissionid")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
+                    b.Property<string>("PermissionsPermissionid")
+                        .HasColumnType("text");
 
-                    b.HasOne("net03_group02.src.Domain.RoleBase.Role", null)
-                        .WithMany()
-                        .HasForeignKey("RolesId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
+                    b.Property<int>("RolesId")
+                        .HasColumnType("integer");
+
+                    b.HasKey("PermissionsPermissionid", "RolesId");
+
+                    b.HasIndex("RolesId");
+
+                    b.ToTable("PermissionRole");
                 });
 
-            modelBuilder.Entity("net03_group02.src.Domain.Asessment.AsessmentScheme", b =>
+            modelBuilder.Entity("FAMS.src.Domain.Asessment.AsessmentScheme", b =>
                 {
-                    b.HasOne("net03_group02.src.Domain.Syllabus.Syllabus", "Syllabus")
+                    b.HasOne("FAMS.src.Domain.Syllabus.Syllabus", "Syllabus")
                         .WithMany("AsessmentSchemes")
                         .HasForeignKey("SyllabusId")
                         .OnDelete(DeleteBehavior.Cascade)
@@ -528,9 +527,9 @@ namespace FAMS.Migrations
                     b.Navigation("Syllabus");
                 });
 
-            modelBuilder.Entity("net03_group02.src.Domain.Classroom.Class", b =>
+            modelBuilder.Entity("FAMS.src.Domain.Classroom.Class", b =>
                 {
-                    b.HasOne("net03_group02.src.Domain.Training.TrainingProgram", "TrainingProgram")
+                    b.HasOne("FAMS.src.Domain.Training.TrainingProgram", "TrainingProgram")
                         .WithMany("Classes")
                         .HasForeignKey("TrainingProgramCode")
                         .OnDelete(DeleteBehavior.Cascade)
@@ -539,15 +538,15 @@ namespace FAMS.Migrations
                     b.Navigation("TrainingProgram");
                 });
 
-            modelBuilder.Entity("net03_group02.src.Domain.Classroom.ClassUser", b =>
+            modelBuilder.Entity("FAMS.src.Domain.Classroom.ClassUser", b =>
                 {
-                    b.HasOne("net03_group02.src.Domain.Classroom.Class", "Class")
+                    b.HasOne("FAMS.src.Domain.Classroom.Class", "Class")
                         .WithMany("ClassUsers")
                         .HasForeignKey("ClassId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("net03_group02.src.Domain.User.User", "User")
+                    b.HasOne("FAMS.src.Domain.User.User", "User")
                         .WithMany("ClassUsers")
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade)
@@ -558,9 +557,9 @@ namespace FAMS.Migrations
                     b.Navigation("User");
                 });
 
-            modelBuilder.Entity("net03_group02.src.Domain.Syllabus.Syllabus", b =>
+            modelBuilder.Entity("FAMS.src.Domain.Syllabus.Syllabus", b =>
                 {
-                    b.HasOne("net03_group02.src.Domain.User.User", "CreatedByUser")
+                    b.HasOne("FAMS.src.Domain.User.User", "CreatedByUser")
                         .WithMany("Syllabbuses")
                         .HasForeignKey("CreatedByUserId")
                         .OnDelete(DeleteBehavior.Cascade)
@@ -569,9 +568,9 @@ namespace FAMS.Migrations
                     b.Navigation("CreatedByUser");
                 });
 
-            modelBuilder.Entity("net03_group02.src.Domain.Training.LearningObjective", b =>
+            modelBuilder.Entity("FAMS.src.Domain.Training.LearningObjective", b =>
                 {
-                    b.HasOne("net03_group02.src.Domain.Training.TrainingContent", "TrainingContent")
+                    b.HasOne("FAMS.src.Domain.Training.TrainingContent", "TrainingContent")
                         .WithMany("LearningObjectives")
                         .HasForeignKey("TrainingContentId")
                         .OnDelete(DeleteBehavior.Cascade)
@@ -580,13 +579,13 @@ namespace FAMS.Migrations
                     b.Navigation("TrainingContent");
                 });
 
-            modelBuilder.Entity("net03_group02.src.Domain.Training.TrainingContent", b =>
+            modelBuilder.Entity("FAMS.src.Domain.Training.TrainingContent", b =>
                 {
-                    b.HasOne("net03_group02.src.Domain.Training.OutputStandard", "OutputStandard")
+                    b.HasOne("FAMS.src.Domain.Training.OutputStandard", "OutputStandard")
                         .WithMany()
                         .HasForeignKey("OutputStandardId");
 
-                    b.HasOne("net03_group02.src.Domain.Training.TrainingUnit", "TrainingUnit")
+                    b.HasOne("FAMS.src.Domain.Training.TrainingUnit", "TrainingUnit")
                         .WithMany("TrainingContents")
                         .HasForeignKey("TrainingUnitUnitCode")
                         .OnDelete(DeleteBehavior.Cascade)
@@ -597,18 +596,18 @@ namespace FAMS.Migrations
                     b.Navigation("TrainingUnit");
                 });
 
-            modelBuilder.Entity("net03_group02.src.Domain.Training.TrainingMaterial", b =>
+            modelBuilder.Entity("FAMS.src.Domain.Training.TrainingMaterial", b =>
                 {
-                    b.HasOne("net03_group02.src.Domain.Training.TrainingUnit", "TrainingUnit")
+                    b.HasOne("FAMS.src.Domain.Training.TrainingUnit", "TrainingUnit")
                         .WithMany("TrainingMaterials")
                         .HasForeignKey("TrainingUnitUnitCode");
 
                     b.Navigation("TrainingUnit");
                 });
 
-            modelBuilder.Entity("net03_group02.src.Domain.Training.TrainingProgram", b =>
+            modelBuilder.Entity("FAMS.src.Domain.Training.TrainingProgram", b =>
                 {
-                    b.HasOne("net03_group02.src.Domain.User.User", "User")
+                    b.HasOne("FAMS.src.Domain.User.User", "User")
                         .WithMany("Trainingprograms")
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade)
@@ -617,15 +616,15 @@ namespace FAMS.Migrations
                     b.Navigation("User");
                 });
 
-            modelBuilder.Entity("net03_group02.src.Domain.Training.TrainingProgramSyllabus", b =>
+            modelBuilder.Entity("FAMS.src.Domain.Training.TrainingProgramSyllabus", b =>
                 {
-                    b.HasOne("net03_group02.src.Domain.Syllabus.Syllabus", "Syllabus")
+                    b.HasOne("FAMS.src.Domain.Syllabus.Syllabus", "Syllabus")
                         .WithMany("TrainingProgramSyllabuses")
                         .HasForeignKey("SyllabusId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("net03_group02.src.Domain.Training.TrainingProgram", "TrainingProgram")
+                    b.HasOne("FAMS.src.Domain.Training.TrainingProgram", "TrainingProgram")
                         .WithMany("TrainingProgramSyllabus")
                         .HasForeignKey("TrainingProgramCode1")
                         .OnDelete(DeleteBehavior.Cascade)
@@ -636,37 +635,67 @@ namespace FAMS.Migrations
                     b.Navigation("TrainingProgram");
                 });
 
-            modelBuilder.Entity("net03_group02.src.Domain.Training.TrainingUnit", b =>
+            modelBuilder.Entity("FAMS.src.Domain.Training.TrainingUnit", b =>
                 {
-                    b.HasOne("net03_group02.src.Domain.Syllabus.Syllabus", "Syllabus")
+                    b.HasOne("FAMS.src.Domain.Syllabus.Syllabus", "Syllabus")
                         .WithMany("TrainingUnits")
                         .HasForeignKey("SyllabusId");
 
                     b.Navigation("Syllabus");
                 });
 
-            modelBuilder.Entity("net03_group02.src.Domain.User.User", b =>
+            modelBuilder.Entity("FAMS.src.Domain.User.User", b =>
                 {
-                    b.HasOne("net03_group02.src.Domain.RoleBase.Role", "Role")
+                    b.HasOne("FAMS.src.Domain.RoleBase.Role", "Role")
                         .WithMany("Users")
-                        .HasForeignKey("Roleid")
+                        .HasForeignKey("RoleId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
                     b.Navigation("Role");
                 });
 
-            modelBuilder.Entity("net03_group02.src.Domain.Classroom.Class", b =>
+            modelBuilder.Entity("LearningObjectiveSyllabus", b =>
+                {
+                    b.HasOne("FAMS.src.Domain.Training.LearningObjective", null)
+                        .WithMany()
+                        .HasForeignKey("LearningObjectivesLearningObjectiveCode")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("FAMS.src.Domain.Syllabus.Syllabus", null)
+                        .WithMany()
+                        .HasForeignKey("SyllabusesSyllabusId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+                });
+
+            modelBuilder.Entity("PermissionRole", b =>
+                {
+                    b.HasOne("FAMS.src.Domain.RoleBase.Permission", null)
+                        .WithMany()
+                        .HasForeignKey("PermissionsPermissionid")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("FAMS.src.Domain.RoleBase.Role", null)
+                        .WithMany()
+                        .HasForeignKey("RolesId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+                });
+
+            modelBuilder.Entity("FAMS.src.Domain.Classroom.Class", b =>
                 {
                     b.Navigation("ClassUsers");
                 });
 
-            modelBuilder.Entity("net03_group02.src.Domain.RoleBase.Role", b =>
+            modelBuilder.Entity("FAMS.src.Domain.RoleBase.Role", b =>
                 {
                     b.Navigation("Users");
                 });
 
-            modelBuilder.Entity("net03_group02.src.Domain.Syllabus.Syllabus", b =>
+            modelBuilder.Entity("FAMS.src.Domain.Syllabus.Syllabus", b =>
                 {
                     b.Navigation("AsessmentSchemes");
 
@@ -675,26 +704,26 @@ namespace FAMS.Migrations
                     b.Navigation("TrainingUnits");
                 });
 
-            modelBuilder.Entity("net03_group02.src.Domain.Training.TrainingContent", b =>
+            modelBuilder.Entity("FAMS.src.Domain.Training.TrainingContent", b =>
                 {
                     b.Navigation("LearningObjectives");
                 });
 
-            modelBuilder.Entity("net03_group02.src.Domain.Training.TrainingProgram", b =>
+            modelBuilder.Entity("FAMS.src.Domain.Training.TrainingProgram", b =>
                 {
                     b.Navigation("Classes");
 
                     b.Navigation("TrainingProgramSyllabus");
                 });
 
-            modelBuilder.Entity("net03_group02.src.Domain.Training.TrainingUnit", b =>
+            modelBuilder.Entity("FAMS.src.Domain.Training.TrainingUnit", b =>
                 {
                     b.Navigation("TrainingContents");
 
                     b.Navigation("TrainingMaterials");
                 });
 
-            modelBuilder.Entity("net03_group02.src.Domain.User.User", b =>
+            modelBuilder.Entity("FAMS.src.Domain.User.User", b =>
                 {
                     b.Navigation("ClassUsers");
 

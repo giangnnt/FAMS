@@ -2,9 +2,11 @@ using System;
 using System.Collections.Generic;
 using System.IdentityModel.Tokens.Jwt;
 using System.Linq;
+using System.Security.Claims;
 using System.Text;
 using System.Threading.Tasks;
 using FAMS.src.Application.Shared.Enum;
+using Microsoft.IdentityModel.Tokens;
 
 namespace FAMS.src.Application.Core.Jwt
 {
@@ -27,7 +29,19 @@ namespace FAMS.src.Application.Core.Jwt
         public string GenerateToken(Guid userId, Guid sessionId, int roleId, UserStatusEnum status, int exp)
         {
             var key = Encoding.ASCII.GetBytes(Environment.GetEnvironmentVariable("SecretKey") ?? "TtgphUjM(.[2m.Z,lD&,5!el};}CNoY0");
-            throw new NotImplementedException();
+            var tokenDescriptor = new SecurityTokenDescriptor
+            {
+                Subject = new ClaimsIdentity(new Claim[]{
+                    new("sessionId", sessionId.ToString()),
+                    new("roleId", roleId.ToString()),
+                    new("status", status.ToString())
+                }),
+                Issuer = userId.ToString(),
+                Expires = DateTime.UtcNow.AddSeconds(exp),
+                SigningCredentials = new SigningCredentials(new SymmetricSecurityKey(key), SecurityAlgorithms.HmacSha256Signature)
+            };
+            var token = _handler.CreateToken(tokenDescriptor);
+            return _handler.WriteToken(token);
         }
 
         public Payload? ValidateToken(string token)

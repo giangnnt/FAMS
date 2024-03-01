@@ -7,6 +7,6 @@ namespace FAMS.src.Domain.User
 {
     public interface IUserRepository
     {
-        
+        Task<User?> GetUserByEmailAsync(string email);
     }
 }

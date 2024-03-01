@@ -21,7 +21,7 @@ namespace FAMS.src.Domain.User
         public string? Phone { get; set; }
         public DateTime? Birthday { get; set; }
         public GenderEnum? Gender { get; set; }
-        public int Roleid { get; set; }
+        public int RoleId { get; set; }
         public UserStatusEnum Status { get; set; }
         public DateTime Createdat { get; set; }
         public DateTime UpdateAt { get; set; }
